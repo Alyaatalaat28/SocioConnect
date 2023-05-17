@@ -1,6 +1,6 @@
 # SocialApp
 
-A new Flutter project using firebase, fcm notification and bloc 
+A new Flutter project using firebase, fcm notification,shared preferences and bloc 
 With some features such as login, sign up, 
 create new post with image 
 , chat room, profile and edit profile 
