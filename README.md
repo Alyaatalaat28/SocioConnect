@@ -1,4 +1,4 @@
-# untitled
+# SocialApp
 
 A new Flutter project.
 
