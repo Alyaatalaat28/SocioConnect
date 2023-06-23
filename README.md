@@ -1,4 +1,4 @@
-# SocialApp
+# SocioConnect
 
 This social app project is built using Flutter and integrates with Firebase for authentication, database, and storage. The app includes features such as FCM notifications, shared preferences for storing user data, and bloc architecture for managing the app's state.
 Users can create new posts with an image upload option, view and join chat rooms, and edit their profile information. 
