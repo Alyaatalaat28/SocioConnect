@@ -1,20 +1,18 @@
+// ignore_for_file: avoid_print
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_applicaion/layout/social_app/cubit/cubit.dart';
-import 'package:flutter_applicaion/layout/social_app/social_layout.dart';
-import 'package:flutter_applicaion/modules/news_app/news_app_layout/cubit/cubit.dart';
-import 'package:flutter_applicaion/modules/news_app/shared/components/components.dart';
-import 'package:flutter_applicaion/modules/shop_app/shop_layout/cubit/cubit.dart';
-import 'package:flutter_applicaion/modules/social_app/login/social_login_screen.dart';
-import 'package:flutter_applicaion/shared/bloc_observer.dart';
-import 'package:flutter_applicaion/shared/components/constants.dart';
-import 'package:flutter_applicaion/shared/cubit/cubit.dart';
-import 'package:flutter_applicaion/shared/cubit/states.dart';
-import 'package:flutter_applicaion/shared/network/local/cache_helper.dart';
-import 'package:flutter_applicaion/shared/network/remote/dio_helper.dart';
-import 'package:flutter_applicaion/shared/styles/theme.dart';
+import 'package:flutter_applicaion/features/layout/manager/cubit/cubit.dart';
+import 'package:flutter_applicaion/core/utils/bloc_observer.dart';
+import 'package:flutter_applicaion/constants.dart';
+import 'package:flutter_applicaion/core/utils/cubit/cubit.dart';
+import 'package:flutter_applicaion/core/utils/cubit/states.dart';
+import 'package:flutter_applicaion/core/utils/cache_helper.dart';
+import 'package:flutter_applicaion/core/utils/styles/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'core/utils/components.dart';
+import 'features/layout/presentation/views/layout_view.dart';
+import 'features/login/presentation/views/social_login_screen.dart';
 
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -46,7 +44,6 @@ void main() async {
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
     
    Bloc.observer = MyBlocObserver();
-   DioHelper.init();
    await CacheHelper.init();
    // Use cubits...
     Widget widget;
@@ -54,9 +51,9 @@ void main() async {
 
    uId=CacheHelper.getData(key: 'uId');
    if(uId != null){
-     widget=SocialLayout();
+     widget=const SocialLayout();
    }else{
-     widget=SocialLoginScreen();
+     widget=const SocialLoginScreen();
    }
 
   runApp( MyApp(
